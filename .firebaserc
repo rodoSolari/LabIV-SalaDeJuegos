@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "app-juegos-54e79": {
+      "hosting": {
+        "LabIV-TP": [
+          "app-juegos-54e79"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "app-juegos-54e79"
+  }
+}
