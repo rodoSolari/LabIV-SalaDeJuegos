@@ -13,6 +13,8 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { FormsModule } from '@angular/forms';
 import { ErrorComponent } from './componentes/error/error.component';
 import { NavbarComponent } from './componentes/navbar/navbar.component';
+import { RegistroComponent } from './componentes/registro/registro.component';
+import { FIREBASE_OPTIONS } from '@angular/fire/compat';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,8 @@ import { NavbarComponent } from './componentes/navbar/navbar.component';
     HomeComponent,
     QuienSoyComponent,
     ErrorComponent,
-    NavbarComponent
+    NavbarComponent,
+    RegistroComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +34,7 @@ import { NavbarComponent } from './componentes/navbar/navbar.component';
     provideFirestore(() => getFirestore()),
     FormsModule
   ],
-  providers: [],
+  providers: [{provide: FIREBASE_OPTIONS, useValue: environment.firebase}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
