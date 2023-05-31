@@ -61,8 +61,8 @@ export class UsuarioService {
   }
 
   //Para verificar si el usuario está logueado
-  public usuarioLogueado(){
+  /*public userLoggedLogueado(){
     return this.auth.authState;
-  }
+  }*/
 
 }

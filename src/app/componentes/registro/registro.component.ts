@@ -51,13 +51,13 @@ export class RegistroComponent {
       const errorCode = error.code;
       const errorMessage = error.message;
       if(error.code == "auth/email-already-in-use"){
-        this.mostrarMensaje();
+        this.showMessage();
       }
     });
   }
 
 
-  mostrarMensaje(){
+  showMessage(){
       this.mensaje = "El usuario que desea registrar ya existe, por favor vuelva a ingresar otros datos";
   }
 

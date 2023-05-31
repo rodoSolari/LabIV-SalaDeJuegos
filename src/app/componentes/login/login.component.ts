@@ -37,7 +37,7 @@ export class LoginComponent {
     });
   }
 
-  llenarDatosUsuario(){
+  fillUserData(){
     this.email = "usuarioprueba@hotmail.com"
     this.clave = "prueba123";
   }

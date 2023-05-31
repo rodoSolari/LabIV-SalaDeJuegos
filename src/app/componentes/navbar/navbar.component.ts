@@ -14,11 +14,11 @@ export class NavbarComponent {
 
   ngOnInit(): void {}
 
-  public usuarioLogueado(){
+  public userIsLogged(){
     return localStorage.getItem('currentUser')!=null;
   }
 
-  getNombreUsuario(){
+  getUserName(){
     const dataCurrentUser = localStorage.getItem('currentUser');
     if(dataCurrentUser != null){
       let usr = JSON.parse(dataCurrentUser);
