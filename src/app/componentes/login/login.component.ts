@@ -12,6 +12,7 @@ export class LoginComponent {
   date = new Date();
   email : string = '';
   clave : string = '';
+  mensaje : string = ''
 
   constructor(public service : UsuarioService, private router : Router) {}
 
@@ -32,6 +33,7 @@ export class LoginComponent {
       this.router.navigate(['home']);
     })
     .catch((error) => {
+      this.mensaje = error.message.slice(9);
       const errorCode = error.code;
       const errorMessage = error.message;
     });

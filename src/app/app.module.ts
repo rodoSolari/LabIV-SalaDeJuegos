@@ -14,6 +14,7 @@ import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { FIREBASE_OPTIONS } from '@angular/fire/compat';
+import { JuegosComponent } from './componentes/juegos/juegos.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { FIREBASE_OPTIONS } from '@angular/fire/compat';
     HomeComponent,
     QuienSoyComponent,
     NavbarComponent,
-    RegistroComponent
+    RegistroComponent,
+    JuegosComponent
   ],
   imports: [
     BrowserModule,

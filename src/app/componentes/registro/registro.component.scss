@@ -6,8 +6,20 @@
 
 body {
   font-family: 'Poppins', sans-serif;
-  background-color: #f0f2f5;
-  color: #1c1e21;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  color: white;
+  background: url('../../../assets/FotoHome.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+ /* position: fixed;
+  width: 100%;
+  height: 100%;
+  color: white;
+  background: url('../../../assets/FotoHome.jpg');*/
 }
 
 main {
@@ -15,11 +27,6 @@ main {
   width: 100vw;
   position: relative;
   margin: 0 auto;
-}
-
-footer {
-  height: 10vh;
-  background-color: #ffffff;
 }
 
 .row {

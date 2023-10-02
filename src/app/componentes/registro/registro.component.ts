@@ -48,9 +48,7 @@ export class RegistroComponent {
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
-      if(error.code == "auth/email-already-in-use"){
-        this.showMessage();
-      }
+      this.mensaje = error.message.slice(9);
     });
   }
 

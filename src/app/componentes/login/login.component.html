@@ -8,20 +8,24 @@
     <!-- <link rel="stylesheet" href="style2.css"> -->
 </head>
 <body>
-    <main>
+    <main style="font-size: arial;">
         <div class="row">
+          <h2 style="text-align: center; text-shadow:  1px;">Loguearse</h2>
             <div class="colm-form">
                 <div class="form-container">
                   <input type="text" placeholder="email" [(ngModel)]="this.email">
                   <input type="password" placeholder="Password" [(ngModel)]="this.clave">
-                  <button class="btn-login" (click)="login()">Login</button>
+                  <button class="btn-login" style="background-color: black;" (click)="login()">Login</button>
                   <button class="btn-new" (click)="fillUserData()">Ingresar como usuario</button>
                 </div>
+                <div>
+                  <p>{{this.mensaje}}</p>
+              </div>
             </div>
         </div>
     </main>
-    <footer>
+<footer>
 
-    </footer>
+</footer>
 </body>
 </html>
