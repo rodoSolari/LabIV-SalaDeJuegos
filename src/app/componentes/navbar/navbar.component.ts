@@ -16,16 +16,7 @@ export class NavbarComponent {
   }
 
   public userIsLogged(){
-    return localStorage.getItem('currentUser')!=null;
-  }
-
-  getUserName(){
-    const dataCurrentUser = localStorage.getItem('currentUser');
-    if(dataCurrentUser != null){
-      let usr = JSON.parse(dataCurrentUser);
-      return usr.nombre;
-    }
-    return "error" ;
+    return this.service.userLogged();
   }
 
   logout(){

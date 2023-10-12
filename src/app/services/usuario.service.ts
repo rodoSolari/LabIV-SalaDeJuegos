@@ -25,17 +25,6 @@ export class UsuarioService {
     return this.auth.createUserWithEmailAndPassword(email, password)
   }
 
-  //listado de usuarios
-  public getUsers(){
-    const col = collection(this.firestore,'Usuarios');
-    const observable = collectionData(col);
-    observable.subscribe((respuesta) => {
-      this.listadoUsuario = respuesta;
-      return respuesta;
-    });
-
-  }
-
   public login(email : string, password: string){
     return this.auth.signInWithEmailAndPassword(email, password);
   }

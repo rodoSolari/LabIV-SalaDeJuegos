@@ -13,9 +13,9 @@
         </li>
       </ul>
     </div>
-    <ul class="navbar-nav mb-12 mb-lg-0" *ngIf="this.userIsLogged() else Login">
+    <ul class="navbar-nav mb-12 mb-lg-0" *ngIf="this.userIsLogged() | async as usuariologeado; else Login">
       <li class="nav-item">
-        <h3 style="color: #4d6ba9; padding: 0 15px;">Hola {{this.getUserName()}}!</h3>
+        <h3 style="color: #4d6ba9; padding: 0 15px;">Hola {{this.usuariologeado.displayName}}!</h3>
       </li>
       <li class="nav-item">
         <button class="btn btn-light" (click)="logout()">Log Out</button>

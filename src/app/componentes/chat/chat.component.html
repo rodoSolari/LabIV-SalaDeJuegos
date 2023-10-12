@@ -1,0 +1,26 @@
+<div class="card text-center cardContainer" *ngIf="estaLogueado()">
+    <div class="card-header text-center">
+      Chat grupal
+    </div>
+
+    <div class="card-body" style="height: 80%;">
+        <div id="ListaDeMensajes" class="ContenedorMensajes h-100">
+          <p *ngFor="let mensaje of listaMensajes" class="msj p-2" #scrollMe
+            [ngClass]="(this.usuariologeado.uid == mensaje.emisor)? 'enviado' : 'recibido'">
+            {{mensaje.nombre+":"}}{{mensaje.texto}}
+          </p>
+        </div>
+    </div>
+
+    <form class="card-footer text-muted input-group" (ngSubmit)="EnviarMensaje()">
+        <input type="text" class="form-control" placeholder="Escriba su mensaje"
+          aria-label="Recipient's username" aria-describedby="basic-addon2"
+          [(ngModel)]="nuevoMensaje" [ngModelOptions]="{standalone: true}">
+        <div class="input-group-append" (click)="EnviarMensaje()">
+          <span class="input-group-text" id="basic-addon2">
+            <img class="imgEnviar" src="../../../assets/send.png" width="20px" alt="enviar mensaje">
+          </span>
+        </div>
+    </form>
+
+</div>

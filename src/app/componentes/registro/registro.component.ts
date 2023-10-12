@@ -19,7 +19,6 @@ export class RegistroComponent {
 
   constructor(public service:UsuarioService,private firestore : Firestore, private router : Router) {
     this.arrayUsuarios = new Array();
-    //this.arrayUsuarios = this.service.getUsers();
     this.mensaje = '';
   }
 
