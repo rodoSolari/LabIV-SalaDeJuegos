@@ -1,15 +1,10 @@
 .cardContainer{
-  width: 300px;
+  width: 400px;
   height: 500px;
   background-color: burlywood;
   position: fixed;
   right: 0.5rem;
   bottom: 0.5rem;
-}
-
-.ContenedorMensajes{
-  overflow: scroll;
-  padding: 0.3rem;
 }
 
 .enviado{
@@ -18,9 +13,14 @@
   background-color: rgb(54, 54, 196);
   color: white;
   min-width: 50.01%;
-  border-radius: 10px;
+  border-radius: 0.25rem;
   text-align: left;
+  font-size: 1.00rem;
+  padding: 0.5rem 1.5rem;
+  border: 1px solid #0a0a0a;
+
 }
+
 
 .recibido{
   display: block;
@@ -28,10 +28,12 @@
   background-color: rgb(222, 147, 26);
   color: white;
   min-width: 50.01%;
-  border-radius: 10px;
+  border-radius: 0.25rem;
   text-align: left;
+  font-size: 1.00rem;
+  padding: 0.5rem 1.5rem;
+  border: 1px solid #0a0a0a;
 }
-
 
 .card-body{
   padding: 0.5rem;
@@ -48,4 +50,13 @@
 
 .imgEnviar:active{
   transform: scale(0.9);
+}
+
+.ContenedorMensajes{
+  overflow: scroll;
+  padding: 0.8rem;
+}
+
+.hora {
+  opacity: 0.5;
 }

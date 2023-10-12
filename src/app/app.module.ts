@@ -14,7 +14,7 @@ import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { FIREBASE_OPTIONS } from '@angular/fire/compat';
-import { JuegosComponent } from './componentes/juegos/juegos.component';
+
 import { ChatComponent } from './componentes/chat/chat.component';
 
 @NgModule({
@@ -25,7 +25,7 @@ import { ChatComponent } from './componentes/chat/chat.component';
     QuienSoyComponent,
     NavbarComponent,
     RegistroComponent,
-    JuegosComponent,
+
     ChatComponent
   ],
   imports: [

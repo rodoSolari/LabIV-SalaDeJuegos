@@ -15,23 +15,25 @@ export class ChatComponent {
   usuariologeado : any;
   mensaje : string = "";
   nuevoMensaje : string = "";
-
   @ViewChild('scrollMe') private myScrollContainer!: ElementRef;
-
   listaMensajes : any[]=[];
 
   constructor(private ChatService : ChatService,private UsuarioService : UsuarioService,private firestore : Firestore){
-  this.ChatService.TraerMensajes().subscribe((lista) => {
-      this.listaMensajes = lista;
-    });
+
   }
 
   ngOnInit(): void {
-    this.scrollearHastaUltimoElemento();
     this.UsuarioService.userLogged().subscribe(usuario => {
       this.usuariologeado = usuario;
     });
 
+    this.ChatService.TraerMensajes().subscribe((lista) => {
+      this.listaMensajes = lista.sort((a,b) => {
+        var asd = new Date(a['hora']).getTime() - new Date(b['hora']).getTime()
+        asd.toLocaleString()
+        return asd
+      });
+    });
   }
 
   estaLogueado() {
@@ -44,9 +46,9 @@ export class ChatComponent {
   }
 
   EnviarMensaje(){
-    this.ChatService.EnviarMensaje(this.usuariologeado,this.nuevoMensaje);
-    console.log("Mensaje enviado al chat, displayNmae:" + this.usuariologeado.displayName);
+    this.ChatService.EnviarMensaje(this.usuariologeado, this.nuevoMensaje)
     this.nuevoMensaje= "";
+
   }
 
   scrollearHastaUltimoElemento() : void{
@@ -55,9 +57,9 @@ export class ChatComponent {
   } catch(err) { }
   }
 
-    ngAfterViewChecked() {
-        this.scrollearHastaUltimoElemento();
-    }
+  ngAfterViewChecked() {
+      this.scrollearHastaUltimoElemento();
+  }
 
 
 }
