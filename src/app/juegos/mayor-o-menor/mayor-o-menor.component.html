@@ -1,3 +1,18 @@
 <body>
-  <p>mayor-o-menor works!</p>
+  <div class="position-relative" style="margin-bottom: 30px; padding-left: 43%;">
+    <button class="btn btn-primary" style="margin-right: 30px" (click)="Menor()">Menor o igual</button>
+    <button class="btn btn-primary" (click)="Mayor()">Mayor o igual</button>
+  </div>
+  <div class="foto" style="margin-bottom: 30px; padding-left: 45%;">
+    <div class="card-body">
+      <img src='{{this.imagenCarta}}' alt="">
+    </div>
+  </div>
+  <div class="Mensaje" *ngIf="perdioElJuego">
+    <h3 style="color: red;">{{this.Mensaje}}</h3>
+    <button class="btn btn-danger" style="margin: 20px;" (click)="this.comenzarJuego()">Volver a jugar</button>
+  </div>
+  <div style="position: relative; margin-bottom: 30px; padding-left: 47%;" >
+    <button class="btn btn-block btn-warning text-white text-center" (click)="comenzarJuego()">Comenzar</button>
+  </div>
 </body>

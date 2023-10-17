@@ -15,7 +15,7 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     JuegosRoutingModule,
-    FormsModule
+    FormsModule,
   ]
 })
 export class JuegosModule { }

@@ -22,7 +22,7 @@ export class NavbarComponent {
   logout(){
     console.log("cerrando sesion..");
     this.service.logout();
-    localStorage.clear();
-    localStorage.removeItem('currentUser');
+    /*localStorage.clear();
+    localStorage.removeItem('currentUser');*/
   }
 }

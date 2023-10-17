@@ -16,6 +16,7 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { FIREBASE_OPTIONS } from '@angular/fire/compat';
 
 import { ChatComponent } from './componentes/chat/chat.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -25,13 +26,13 @@ import { ChatComponent } from './componentes/chat/chat.component';
     QuienSoyComponent,
     NavbarComponent,
     RegistroComponent,
-
     ChatComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    HttpClientModule,
     provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore())
