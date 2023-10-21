@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Firestore, addDoc, collection, collectionData, getFirestore, orderBy } from '@angular/fire/firestore';
+import { Firestore, addDoc, collection, collectionData, orderBy} from '@angular/fire/firestore';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 
 @Injectable({
@@ -9,13 +11,13 @@ export class ChatService {
 
   items : any[] = [];
 
-  constructor(private firestore : Firestore) {
+  constructor(private firestore : Firestore, private ang : AngularFirestore) {
 
   }
 
   TraerMensajes(){
-    const mensajes = collection(this.firestore,'chat');
-    const observable = collectionData(mensajes);
+    const mensajes = this.ang.collection('chat',ref => ref.orderBy('hora'))
+    const observable = mensajes.snapshotChanges();
     return observable;
   }
 
@@ -26,7 +28,7 @@ export class ChatService {
       emisor : usuariologeado.uid,
       nombre: usuariologeado.displayName,
       texto: nuevoMensaje,
-      hora: date.toLocaleString(),
+      hora: date.toLocaleString()
     });
 
   }

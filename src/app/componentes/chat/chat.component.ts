@@ -27,13 +27,24 @@ export class ChatComponent {
       this.usuariologeado = usuario;
     });
 
-    this.ChatService.TraerMensajes().subscribe((lista) => {
+    this.ChatService.TraerMensajes().subscribe((mensajes) => {
+      this.listaMensajes = mensajes.map((doc) => {
+        const data: any = doc.payload.doc.data();
+        return {
+          emisor: data.emisor,
+          nombre: data.nombre,
+          texto: data.texto,
+          hora: data.hora
+        };
+      });
+    })
+
+    /*this.ChatService.TraerMensajes().subscribe((lista) => {
       this.listaMensajes = lista.sort((a,b) => {
         var asd = new Date(a['hora']).getTime() - new Date(b['hora']).getTime()
-        asd.toLocaleString()
         return asd
       });
-    });
+    });*/
   }
 
   estaLogueado() {
@@ -48,7 +59,6 @@ export class ChatComponent {
   EnviarMensaje(){
     this.ChatService.EnviarMensaje(this.usuariologeado, this.nuevoMensaje)
     this.nuevoMensaje= "";
-
   }
 
   scrollearHastaUltimoElemento() : void{

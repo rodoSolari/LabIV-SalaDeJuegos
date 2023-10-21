@@ -5,10 +5,10 @@
 
     <div class="card-body" style="height: 80%;">
         <div id="ListaDeMensajes" class="ContenedorMensajes h-100" #scrollMe>
-          <div *ngFor="let mensaje of listaMensajes" class="msj p-1"
+          <div style="margin: 5px;" *ngFor="let mensaje of listaMensajes" class="p-1"
             [ngClass]="(this.usuariologeado.uid == mensaje.emisor)? 'enviado' : 'recibido'">
-            <p class="p-0 px-1" style="margin: 0">{{mensaje.nombre+": "}}{{mensaje.texto}}</p>
-            <p class="p-0 px-1" style="opacity: 0.5;margin: 0">{{mensaje.hora | date: "HH:mm"}}</p>
+            <p style="margin: 0">{{mensaje.nombre+": "}}{{mensaje.texto}}</p>
+            <p style="opacity: 0.5;margin: 0">{{mensaje.hora}}</p>
           </div>
         </div>
     </div>
