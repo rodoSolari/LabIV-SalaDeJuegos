@@ -36,11 +36,6 @@ export class RegistroComponent {
         nombre:this.nombre,
       });
       userCredential.user?.updateProfile({displayName: this.nombre})
-      /*console.log("usuario registrado y logueado correctamente");
-
-      const currentUser = JSON.stringify({"email" : this.email,"nombre" : this.nombre})
-
-      localStorage.setItem("currentUser",currentUser);*/
       this.router.navigate(['home']);
 
     })

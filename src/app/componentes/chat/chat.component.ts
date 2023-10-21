@@ -38,13 +38,6 @@ export class ChatComponent {
         };
       });
     })
-
-    /*this.ChatService.TraerMensajes().subscribe((lista) => {
-      this.listaMensajes = lista.sort((a,b) => {
-        var asd = new Date(a['hora']).getTime() - new Date(b['hora']).getTime()
-        return asd
-      });
-    });*/
   }
 
   estaLogueado() {

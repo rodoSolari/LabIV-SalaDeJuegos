@@ -17,7 +17,6 @@ import { AngularFireModule, FIREBASE_OPTIONS } from '@angular/fire/compat';
 import { HttpClientModule } from '@angular/common/http';
 
 import { ChatComponent } from './componentes/chat/chat.component';
-import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -33,6 +32,8 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    HttpClientModule,
+    AngularFireModule,
     provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore())
