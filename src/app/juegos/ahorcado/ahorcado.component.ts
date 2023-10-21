@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './ahorcado.component.html',
   styleUrls: ['./ahorcado.component.scss']
 })
-export class AhorcadoComponent implements OnInit {
+export class AhorcadoComponent {
 
   constructor(){
 
@@ -56,5 +56,4 @@ export class AhorcadoComponent implements OnInit {
       }
     }
   }
-
 }

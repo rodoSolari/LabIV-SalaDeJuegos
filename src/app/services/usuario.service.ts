@@ -30,7 +30,7 @@ export class UsuarioService {
   }
 
   //Para alojar los datos del usuario que se loguea en el local storage
-  public setDataFromUser(user : Usuario) : void{
+ /* public setDataFromUser(user : Usuario) : void{
     const currentUser = localStorage.getItem('currentUser');
     let userStringify = JSON.stringify({"email" : user.email,"nombre" : user.nombre});
     if(currentUser == null){
@@ -39,7 +39,7 @@ export class UsuarioService {
       localStorage.removeItem('currentUser');
       localStorage.setItem('currentUser', userStringify);
     }
-  }
+  }*/
 
   //cerrar sesion
   public logout(){

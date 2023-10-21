@@ -25,11 +25,11 @@ export class LoginComponent {
       const date : Date = new Date();
       this.service.subirLog(this.email,date.toLocaleString());
       console.log("usuario logueado correctamente");
-      let nombreUsuarioLogueado = userCredential.user!.displayName;
+      /*let nombreUsuarioLogueado = userCredential.user!.displayName;
 
       let usuario = new Usuario(this.email,this.clave,nombreUsuarioLogueado!);
       this.service.setDataFromUser(usuario);
-      console.log(userCredential);
+      console.log(userCredential);*/
       this.router.navigate(['home']);
     })
     .catch((error) => {
