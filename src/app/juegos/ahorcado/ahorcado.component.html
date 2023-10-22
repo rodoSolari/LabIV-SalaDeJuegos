@@ -1,14 +1,26 @@
 <body>
-  <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3">
+  <div style="position: relative; margin-bottom: 30px; padding-left: 47%;" >
+    <button class="btn btn-block btn-warning text-white text-center" (click)="comenzarJuego()">Comenzar</button>
+  </div>
+
+  <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3" *ngIf="comenzar">
+
+    <div *ngIf="RepetirJuego">
+      <h2 style="color: red;">{{Mensaje}}</h2>
+      <button class="btn btn-block btn-primary text-white text-center" (click)="resetearJuego()">Volver a jugar</button>
+    </div>
     <div *ngIf="perdioElJuego">
       <h2 style="color: red;">{{Mensaje}}</h2>
-      <button class="btn btn-primary"  (click)="this.comenzarJuego()">Volver a jugar</button>
-     </div>
+      <button class="btn btn-warning"  (click)="this.comenzarJuego()">Volver a jugar</button>
+    </div>
     <div class="imagenes">
         <img src='../../../assets/Ahorcado{{this.NroImagen}}.png' alt="">
     </div>
     <div>
       <h2>{{palabraConGuiones.join(" ")}}</h2>
+    </div>
+    <div>
+      <h4>Puntaje : {{this.puntaje}}</h4>
     </div>
     <div class="letras">
       <button id="letra" class="btn btn-primary" type="submit" style="margin: 5px" *ngFor="let i of ArrayLetras" (click)="verificarLetra(i)">{{i}}</button>

@@ -1,18 +1,26 @@
 <body>
-  <div class="position-relative" style="margin-bottom: 30px; padding-left: 43%;">
-    <button class="btn btn-primary" style="margin-right: 30px" (click)="Menor()">Menor o igual</button>
-    <button class="btn btn-primary" (click)="Mayor()">Mayor o igual</button>
-  </div>
-  <div class="foto" style="margin-bottom: 30px; padding-left: 45%;">
-    <div class="card-body">
-      <img src='{{this.imagenCarta}}' alt="">
+    <div style="position: relative; margin-bottom: 30px; padding-left: 47%;">
+      <button class="btn btn-block btn-warning text-white text-center" (click)="comenzarJuego()">Comenzar</button>
     </div>
-  </div>
-  <div class="Mensaje" *ngIf="perdioElJuego">
-    <h3 style="color: red;">{{this.Mensaje}}</h3>
-    <button class="btn btn-danger" style="margin: 20px;" (click)="this.comenzarJuego()">Volver a jugar</button>
-  </div>
-  <div style="position: relative; margin-bottom: 30px; padding-left: 47%;" >
-    <button class="btn btn-block btn-warning text-white text-center" (click)="comenzarJuego()">Comenzar</button>
-  </div>
+    <div *ngIf="comenzar">
+      <div class="position-relative" style="margin-bottom: 30px; padding-left: 43%;">
+        <button class="btn btn-primary" style="margin-right: 30px" (click)="Menor()">Menor o igual</button>
+        <button class="btn btn-primary" (click)="Mayor()">Mayor o igual</button>
+      </div>
+      <div class="foto" style="margin-bottom: 30px; padding-left: 45%;">
+        <div class="card-body">
+          <img src='{{this.imagenCarta}}' alt="">
+        </div>
+      </div>
+      <div class="Mensaje" *ngIf="perdioElJuego">
+        <h3 style="color: red;">{{this.Mensaje}}</h3>
+        <button class="btn btn-danger" style="margin: 20px;" (click)="this.comenzarJuego()">Volver a jugar</button>
+      </div>
+      <div style="margin-bottom: 30px; padding-left: 45%;">
+        <h4>Puntaje : {{this.puntaje}}</h4> <button class="btn btn-danger" style="margin: 10%;" (click)="this.retirarse()">Retirarse</button>
+      </div>
+    </div>
+    <div *ngIf="terminarJuego">
+      <h4>{{this.mensaje}}</h4>
+    </div>
 </body>
