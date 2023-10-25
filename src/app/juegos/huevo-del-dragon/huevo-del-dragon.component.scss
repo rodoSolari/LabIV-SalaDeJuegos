@@ -1,0 +1,39 @@
+body {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  color: white;
+  //background-color: black;
+  background: url('../../../assets/FotoHome.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.mapaJuego{
+  width: 660px;
+  align-items: center;
+  background-color: darkgray;
+  border: 5px solid;
+  margin: auto;
+  margin-top: 120px;
+}
+
+/*.btn span.icon{
+  background: url('../../../assets/dragon-egg.png');
+}*/
+
+.btn span.icon {
+  background: url('../../../assets/dragon-egg.png') no-repeat;
+  float: left;
+  width: 10px;
+  height: 40px;
+}
+
+.Mensaje{
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}

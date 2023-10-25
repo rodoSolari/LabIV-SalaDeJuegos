@@ -1,0 +1,37 @@
+ <html>
+  <body>
+     <div class="tablero">
+          <div id="encabezado">
+
+               <h3><span id="pregunta">{{this.pregunta.pregunta}}</span></h3>
+               <br>
+               <div *ngIf="this.pregunta.imagen != ''">
+                    <img id="imagen" src={{this.pregunta.imagen}} style="width: 40%;height: 200px;object-fit: contain;" alt="">
+               </div>
+
+            <div class="d-grid gap-4 col-4 mx-auto" style="margin-top: 50px;">
+              <div type="button" class="btn btn-light" (click)="seleccionarOpcion(1)">
+                 {{this.pregunta.respuesta1}}
+              </div>
+              <div type="button" class="btn btn-light" id="opcion-2"  (click)="seleccionarOpcion(2)">
+                {{this.pregunta.respuesta2}}
+              </div>
+              <div type="button" class="btn btn-light" id="opcion-3"  (click)="seleccionarOpcion(3)">
+                {{this.pregunta.respuesta3}}
+              </div>
+              <div type="button" class="btn btn-light" id="opcion-4" (click)="seleccionarOpcion(4)">
+                {{this.pregunta.respuesta4}}
+              </div>
+              <div>
+                <h3 *ngIf="respuestaCorrecta" style="color: green">{{this.Mensaje}}</h3>
+                <h3 *ngIf="!respuestaCorrecta" style="color: red;">{{this.Mensaje}}</h3>
+              </div>
+              <div *ngIf="this.perdioElJuego">
+                <button class="btn btn-block btn-primary text-white text-center" (click)="resetearJuego()">Volver a jugar</button>
+              </div>
+            </div>
+          </div>
+     </div>
+  </body>
+
+</html>

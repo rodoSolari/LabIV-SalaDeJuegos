@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CartasService } from 'src/app/services/cartas.service';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-mayor-o-menor',
@@ -20,7 +20,7 @@ export class MayorOMenorComponent {
   imagenCarta : any;
   mensaje : string = "";
 
-  constructor(private cartasService : CartasService){
+  constructor(private cartasService : ApiService){
 
   }
 

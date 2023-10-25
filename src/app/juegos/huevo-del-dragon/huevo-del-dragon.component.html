@@ -1,0 +1,20 @@
+<body>
+  <h2 style="text-align: center;">Puntaje: {{this.puntaje}}</h2>
+  <div class="Mensaje">
+    <h2 style="margin-right: 20px;">{{this.mensaje}}</h2>
+    <div *ngIf="perdioElJuego">
+      <button class="btn btn-danger" (click)="this.comenzarJuego()">Volver a jugar</button>
+    </div>
+  </div>
+  <div id="mapa" class="mapaJuego" [style]='this.estiloBloqueo'>
+    <button id="boton" type="button" class="btn btn-primary" style="margin: 15px; width: 100px;height: 100px;border-radius: 0.25rem;border: 1px solid #0a0a0a;"
+      *ngFor="let i of tablero" (click)="acierta(i)">
+      <div *ngIf="acertado == true" [style.background-color]="acertado ? 'green' : 'red'">
+        <div *ngIf="i == 'X'">
+          <img src="../../../assets/dragon-egg.png" width="95%" height="95%">
+        </div>
+      </div>
+    </button>
+  </div>
+</body>
+

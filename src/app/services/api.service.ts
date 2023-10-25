@@ -4,10 +4,10 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class CartasService {
-/*
+export class ApiService {
+
   api : string = 'https://www.deckofcardsapi.com/api/deck/new/draw/?count=52';
-  apiPaises : string = 'https://restcountries.com/v3.1/'
+  apiPaises : string = 'https://restcountries.com/v3.1/region/europe?fields=name,flags' //Solo me traigo la bandera y nombre
 
   constructor(private http: HttpClient) {
 
@@ -18,7 +18,7 @@ export class CartasService {
   }
 
   obtenerBanderas(){
-    return this.http.get(this.apiPaises + 'all');
-  }*/
+    return this.http.get(this.apiPaises);
+  }
 
 }
