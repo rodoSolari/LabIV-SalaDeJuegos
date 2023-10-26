@@ -111,6 +111,7 @@ export class PreguntadosComponent {
         this.perdioElJuego  = true;
         this.respuestaCorrecta = false;
         this.Mensaje = "Respuesta incorrecta, desea volver a jugar?";
+        this.registrarPuntos();
         this.estiloBloqueo = "pointer-events:none";
       }else{
         this.respuestaCorrecta = false;

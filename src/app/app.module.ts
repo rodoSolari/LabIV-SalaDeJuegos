@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './componentes/login/login.component';
 import { HomeComponent } from './componentes/home/home.component';
 import { QuienSoyComponent } from './componentes/quien-soy/quien-soy.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavbarComponent } from './componentes/navbar/navbar.component';
 import { RegistroComponent } from './componentes/registro/registro.component';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
@@ -17,6 +17,7 @@ import { AngularFireModule, FIREBASE_OPTIONS } from '@angular/fire/compat';
 import { HttpClientModule } from '@angular/common/http';
 
 import { ChatComponent } from './componentes/chat/chat.component';
+import { EncuestaComponent } from './componentes/encuesta/encuesta.component';
 
 @NgModule({
   declarations: [
@@ -26,12 +27,14 @@ import { ChatComponent } from './componentes/chat/chat.component';
     QuienSoyComponent,
     NavbarComponent,
     RegistroComponent,
-    ChatComponent
+    ChatComponent,
+    EncuestaComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     AngularFireModule,
     provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),

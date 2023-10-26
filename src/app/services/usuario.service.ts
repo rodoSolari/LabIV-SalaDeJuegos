@@ -63,4 +63,24 @@ export class UsuarioService {
     });
   }
 
+  public subirEncuesta(datosForm : any){
+    const date = new Date();
+    const col = collection(this.firestore,'encuestas');
+    addDoc(col,{
+      nombre : datosForm.nombre,
+      apellido: datosForm.apellido,
+      edad : datosForm.edad,
+      telefono: datosForm.Telefono,
+      huevoDelDragon : datosForm.huevoDelDragon,
+      mayorMenor : datosForm.MayorMenor,
+      preguntados : datosForm.preguntados,
+      ahorcado : datosForm.ahorcado,
+      ninguno : datosForm.ninguno,
+      opinion : datosForm.opinion,
+      opinionPagina : datosForm.opinionPagina,
+      radioDificil : datosForm.radioDificil,
+      radioFacil : datosForm.radioFacil
+    });
+  }
+
 }

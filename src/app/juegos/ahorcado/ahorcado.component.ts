@@ -17,6 +17,7 @@ export class AhorcadoComponent {
   ArrayPalabras : string[] = ['AUTO','LIBRO','BIBLIOTECA'];
   palabra : string = '';
   ArrayLetras = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','Ñ','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
+  estiloBloqueo : string = "";
 
   vidas : number = 0;
   NroImagen : number = 0;
@@ -42,6 +43,7 @@ export class AhorcadoComponent {
     this.RepetirJuego = false;
     this.comenzar = true;
     this.perdioElJuego  = false;
+    this.estiloBloqueo = "";
   }
 
   devolverArrayPalabras(){
@@ -74,7 +76,9 @@ export class AhorcadoComponent {
       this.NroImagen++;
       if(this.vidas == 0){
           this.perdioElJuego = true;
+          this.estiloBloqueo = "pointer-events:none";
           this.Mensaje = "Perdiste, Desea volver a jugar?";
+          this.registrarPuntos();
       }
     }
     if(!this.palabraConGuiones.includes('_')){

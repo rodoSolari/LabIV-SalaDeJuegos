@@ -1,0 +1,98 @@
+<body>
+  <div class="formulario" style="background-color: rgb(69, 85, 83); width: 50%;height: 90%; margin-left: 20%;" >
+    <div class="row" style="margin-left: 5%">
+        <div class="col-md-6 order-md-1">
+            <form class="needs-validation" [formGroup]='this.formGroup' novalidate (ngSubmit)="enviar()">
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="nombre">Nombre</label>
+                        <input name="nombre" type="text" class="form-control" id="nombre" formControlName="nombre">
+                        <small class="invalid" style="color: red;" *ngIf="formGroup.get('nombre')?.errors?.['required'] && formGroup.get('nombre')?.touched">Nombre requerido</small>
+                    </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <label for="apellido">Apellido</label>
+                    <input name="apellido" type="text" class="form-control" id="apellido" formControlName="apellido">
+                    <small class="invalid" style="color: red;" *ngIf="formGroup.get('apellido')?.errors?.['required']  && formGroup.get('apellido')?.touched">Apellido requerido</small>
+                </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3 mb-3">
+                        <label for="edad">Edad</label>
+                        <input name="edad" type="number" class="form-control" id="edad" formControlName="edad">
+                        <small class="invalid" style="color: red;" *ngIf="formGroup.get('edad')?.errors?.['required']  && formGroup.get('edad')?.touched">Edad requerida</small>
+                        <small class="invalid" style="color: red;" *ngIf="formGroup.get('edad')?.errors?.['min']  || formGroup.get('edad')?.errors?.['max']  && formGroup.get('edad')?.touched">Edad entre 18 y 99 años</small>
+                    </div>
+
+                </div>
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <label for="Telefono">Telefono</label>
+                    <input name="Telefono" type="number" class="form-control" id="Telefono" formControlName="Telefono">
+                    <small class="invalid" style="color: red;" *ngIf="formGroup.get('Telefono')?.errors?.['required']  && formGroup.get('Telefono')?.touched">Telefono requerido</small>
+                    <small class="invalid" style="color: red;" *ngIf="formGroup.get('Telefono')?.errors?.['min']  || formGroup.get('Telefono')?.errors?.['max']  && formGroup.get('Telefono')?.touched">Telefono incorrecto</small>
+                  </div>
+                </div>
+
+                <h5 class="mb-3">Juego preferido</h5>
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="huevoDelDragon" formControlName="huevoDelDragon">
+                    <label class="custom-control-label" for="huevoDelDragon">Huevo del dragon</label>
+                </div>
+                <div class="custom-control custom-checkbox">
+                  <input type="checkbox" class="custom-control-input" id="preguntados" formControlName="preguntados">
+                  <label class="custom-control-label" for="preguntados">Preguntados</label>
+                </div>
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="ahorcado" formControlName="ahorcado">
+                    <label class="custom-control-label" for="ahorcado">Ahorcado</label>
+                </div>
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="MayorMenor" formControlName="MayorMenor">
+                    <label class="custom-control-label" for="MayorMenor">Mayor o menor</label>
+                </div>
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="ninguno" formControlName="ninguno">
+                    <label class="custom-control-label" for="ninguno">Ninguno</label>
+                </div>
+
+                <hr class="mb-4">
+                <h6 class="mb-3">le fue dificil jugar a los juegos?</h6>
+                <div class="custom-control custom-radio">
+                  <p>
+                    <input id="radioDificil" type="radio" name="radioDificil" required checked>Yes
+                    </p>
+                    <p>
+                    <input id="radioFacil" type="radio" name="radioFacil">No
+                    </p>
+                </div>
+
+
+                <hr class="mb-4">
+
+                <div class="col-md-12 mb-3">
+                  <h6 class="mb-3">que opinion realizaria a los juegos?</h6>
+                  <textarea id="opinion" formControlName="opinion" id="opinion" name="opinion" rows="4" cols="40"></textarea>
+                  <small class="invalid"  *ngIf="formGroup.get('opinion')?.errors?.['opinion']  && formGroup.get('opinion')?.touched">Opinion requerida</small>
+                </div>
+                <hr class="mb-4">
+                <div class="col-md-12 mb-3">
+                  <h6 class="mb-3">que opinion realizaria de la pagina?</h6>
+                  <textarea id="opinionPagina" formControlName="opinionPagina" id="opinionPagina" name="opinionPagina" rows="4" cols="40"></textarea>
+                  <small class="invalid"  *ngIf="formGroup.get('opinionPagina')?.errors?.['opinionPagina']  && formGroup.get('opinionPagina')?.touched">Opinion pagina requerida</small>
+                </div>
+
+                <button class="btn btn-primary btn-lg btn-block" type="submit" [disabled]="formGroup.invalid">Enviar encuesta</button>
+
+                <div>
+                  {{this.Mensaje}}
+                </div>
+            </form>
+
+        </div>
+
+    </div>
+  </div>
+
+</body>

@@ -22,7 +22,7 @@
     <div>
       <h4>Puntaje : {{this.puntaje}}</h4>
     </div>
-    <div class="letras">
+    <div class="letras" [style]='this.estiloBloqueo'>
       <button id="letra" class="btn btn-primary" type="submit" style="margin: 5px" *ngFor="let i of ArrayLetras" (click)="verificarLetra(i)">{{i}}</button>
     </div>
   </div>

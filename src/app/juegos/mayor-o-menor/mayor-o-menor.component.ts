@@ -99,6 +99,7 @@ export class MayorOMenorComponent {
       this.Mensaje = "Perdiste, Desea volver a jugar?";
       this.perdioElJuego = true;
       this.puntaje=0;
+      this.registrarPuntos();
     }
   }
 

@@ -59,6 +59,7 @@ export class HuevoDelDragonComponent implements OnInit{
         if(this.puntaje == 0){
           this.perdioElJuego=true;
           this.mensaje = "Perdiste, desea volver a jugar?";
+          this.registrarPuntos();
         }
       }
     }
