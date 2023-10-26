@@ -51,4 +51,16 @@ export class UsuarioService {
     return this.auth.authState;
   }
 
+  public subirPuntaje(puntaje : number, usuario : Usuario,juego : string){
+    const date = new Date();
+    const col = collection(this.firestore,'puntajes');
+    addDoc(col,{
+      mail : usuario.email,
+      nombre: usuario.nombre,
+      puntaje : puntaje,
+      fecha: date,
+      juego : juego
+    });
+  }
+
 }

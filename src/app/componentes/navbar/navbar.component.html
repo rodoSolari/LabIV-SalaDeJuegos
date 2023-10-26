@@ -8,23 +8,21 @@
         <li class="nav-item dropdown">
           <a class="nav-link" routerLink="quien-soy" role="button">Quien soy</a>
         </li>
-        <!--<li class="nav-item dropdown">
-          <a class="nav-link" routerLink="juegos" role="button">Juegos</a>
-        </li>-->
-        <div class="dropdown">
-          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-            Juegos
-          </button>
-          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-            <li><a class="dropdown-item" [routerLink]="'./juegos/ahorcado'">Ahorcado</a></li>
-            <li><a class="dropdown-item" [routerLink]="'./juegos/mayor-o-menor'">Mayor-o-menor</a></li>
-            <li><a class="dropdown-item" [routerLink]="'./juegos/preguntados'">Preguntados</a></li>
-            <li><a class="dropdown-item" [routerLink]="'./juegos/huevo-del-dragon'">Huevo del dragon</a></li>
-          </ul>
-        </div>
+
       </ul>
     </div>
-    <ul class="navbar-nav mb-12 mb-lg-0" *ngIf="this.userIsLogged() | async as usuariologeado; else Login">
+    <ul class="navbar-nav mb-12 mb-lg-0" *ngIf="this.usuariologeado as usuariologeado; else Login">
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle justify-content-center" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+          Juegos
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <li><a class="dropdown-item" [routerLink]="'./juegos/ahorcado'">Ahorcado</a></li>
+          <li><a class="dropdown-item" [routerLink]="'./juegos/mayor-o-menor'">Mayor-o-menor</a></li>
+          <li><a class="dropdown-item" [routerLink]="'./juegos/preguntados'">Preguntados</a></li>
+          <li><a class="dropdown-item" [routerLink]="'./juegos/huevo-del-dragon'">Huevo del dragon</a></li>
+        </ul>
+      </div>
       <li class="nav-item">
         <h3 style="color: #4d6ba9; padding: 0 15px;">Hola {{this.usuariologeado.displayName}}!</h3>
       </li>

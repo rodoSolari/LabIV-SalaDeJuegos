@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
+import { getAuth } from '@angular/fire/auth';
+import { Usuario } from 'src/app/clases/usuario';
 import { ApiService } from 'src/app/services/api.service';
+import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
   selector: 'app-mayor-o-menor',
@@ -19,8 +22,10 @@ export class MayorOMenorComponent {
   terminarJuego : boolean = false;
   imagenCarta : any;
   mensaje : string = "";
+  usuario! : Usuario;
 
-  constructor(private cartasService : ApiService){
+
+  constructor(private cartasService : ApiService,private usuarioServ : UsuarioService){
 
   }
 
@@ -30,7 +35,6 @@ export class MayorOMenorComponent {
       this.ModificarValorCartas();
       // comenzarJuego();
     });
-    console.log("VALOR DEL BOOLEAN" + this.perdioElJuego)
   }
 
   comenzarJuego(){
@@ -106,6 +110,16 @@ export class MayorOMenorComponent {
     this.terminarJuego = true;
     this.comenzar = false;
     this.mensaje= "Te has retirado, tu PUNTAJE es: " + this.puntaje;
+    this.registrarPuntos();
   }
 
+  registrarPuntos(){
+    const auth = getAuth();
+    const user = auth.currentUser;
+    if(user !== null && user?.email !==null  && user.displayName !==null){
+      this.usuario = new Usuario(user.email," ",user.displayName);
+      this.usuarioServ.subirPuntaje(this.puntaje,this.usuario,"Mayor o menor");
+      console.log("SUBIDO PUNTAJE EXITOSAMENTE");
+    }
+  }
 }

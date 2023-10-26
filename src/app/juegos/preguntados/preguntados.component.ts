@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
+import { getAuth } from '@angular/fire/auth';
 import { switchAll } from 'rxjs';
+import { Usuario } from 'src/app/clases/usuario';
 import { ApiService } from 'src/app/services/api.service';
+import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
   selector: 'app-preguntados',
@@ -22,6 +25,8 @@ export class PreguntadosComponent {
   perdioElJuego : boolean = false;
   respuestaCorrecta : boolean = false;
   pregunta : any = [];
+
+  usuario! : Usuario;
 
   baseDePreguntas : any = [
     {
@@ -62,7 +67,7 @@ export class PreguntadosComponent {
     },
   ];
 
-  constructor(private api : ApiService){
+  constructor(private api : ApiService, private usuarioServ : UsuarioService){
 
   }
 
@@ -123,8 +128,8 @@ export class PreguntadosComponent {
     setTimeout(() => {
       if(!this.perdioElJuego){
         if(this.baseDePreguntas.length == this.indicePregunta){
-          console.log("GANEEE");
           this.Mensaje = "FINALIZASTE, tu puntaje final es: " + this.puntaje;
+          this.registrarPuntos();
           this.estiloBloqueo = "pointer-events:none";
         }else{
           this.Mensaje = "";
@@ -133,6 +138,16 @@ export class PreguntadosComponent {
       }
     }, 1000);
 
+  }
+
+  registrarPuntos(){
+    const auth = getAuth();
+    const user = auth.currentUser;
+    if(user !== null && user?.email !==null  && user.displayName !==null){
+      this.usuario = new Usuario(user.email," ",user.displayName);
+      this.usuarioServ.subirPuntaje(this.puntaje,this.usuario,"Preguntados");
+      console.log("SUBIDO PUNTAJE EXITOSAMENTE");
+    }
   }
 
 

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { getAuth } from '@angular/fire/auth';
+import { Usuario } from 'src/app/clases/usuario';
+import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
   selector: 'app-huevo-del-dragon',
@@ -15,8 +18,10 @@ export class HuevoDelDragonComponent implements OnInit{
     perdioElJuego : boolean = false;
     gano : boolean = false;
     estiloBloqueo : string = "";
-//pointer-events:none;
-    constructor(){
+
+    usuario! : Usuario;
+    //pointer-events:none;
+    constructor(private service : UsuarioService){
 
     }
 
@@ -45,6 +50,7 @@ export class HuevoDelDragonComponent implements OnInit{
       if(posicion == 'X'){
         this.acertado = true;
         this.mensaje = "ACERTASTE, terminaste el juego con: " + this.puntaje + " Puntos";
+        this.registrarPuntos();
         this.estiloBloqueo = "pointer-events:none";
 
       }else{
@@ -54,6 +60,16 @@ export class HuevoDelDragonComponent implements OnInit{
           this.perdioElJuego=true;
           this.mensaje = "Perdiste, desea volver a jugar?";
         }
+      }
+    }
+
+    registrarPuntos(){
+      const auth = getAuth();
+      const user = auth.currentUser;
+      if(user !== null && user?.email !==null  && user.displayName !==null){
+        this.usuario = new Usuario(user.email," ",user.displayName);
+        this.service.subirPuntaje(this.puntaje,this.usuario,"Huevo-del-dragon");
+        console.log("SUBIDO PUNTAJE EXITOSAMENTE");
       }
     }
 }

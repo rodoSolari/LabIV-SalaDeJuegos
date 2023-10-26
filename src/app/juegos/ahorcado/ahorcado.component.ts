@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { getAuth } from '@angular/fire/auth';
+import { Usuario } from 'src/app/clases/usuario';
+import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
   selector: 'app-ahorcado',
@@ -7,11 +10,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AhorcadoComponent {
 
-  constructor(){
+  constructor(private service : UsuarioService){
 
   }
 
-  ArrayPalabras : string[] = ['AUTO','LIBRO'];
+  ArrayPalabras : string[] = ['AUTO','LIBRO','BIBLIOTECA'];
   palabra : string = '';
   ArrayLetras = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','Ñ','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
 
@@ -22,6 +25,7 @@ export class AhorcadoComponent {
   comenzar : boolean= false;
   puntaje : number = 0;
   perdioElJuego : boolean = false;
+  usuario! : Usuario;
 
   //Palabra secreta
   palabraConGuiones : string[] = [];
@@ -45,7 +49,7 @@ export class AhorcadoComponent {
   }
 
   resetearJuego(){
-    this.ArrayPalabras = ['AUTO','LIBRO'];
+    this.ArrayPalabras = ['AUTO','LIBRO','BIBLIOTECA'];
     this.comenzar = false;
     this.perdioElJuego  = false;
     this.comenzarJuego();
@@ -84,9 +88,21 @@ export class AhorcadoComponent {
       if(this.ArrayPalabras.length == 0){
         this.RepetirJuego = true;
         this.Mensaje = "GANASTE EL JUEGO, FELICIDADES!!!";
+        this.registrarPuntos()
       }else{
         this.comenzarJuego();
       }
     }
   }
+
+  registrarPuntos(){
+    const auth = getAuth();
+    const user = auth.currentUser;
+    if(user !== null && user?.email !==null  && user.displayName !==null){
+      this.usuario = new Usuario(user.email," ",user.displayName);
+      this.service.subirPuntaje(this.puntaje,this.usuario,"Ahorcado");
+      console.log("SUBIDO PUNTAJE EXITOSAMENTE");
+    }
+  }
+
 }
