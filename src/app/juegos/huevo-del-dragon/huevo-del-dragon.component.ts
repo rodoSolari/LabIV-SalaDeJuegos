@@ -38,7 +38,7 @@ export class HuevoDelDragonComponent implements OnInit{
       for(let i = 0;i<this.tablero.length;i++){
           this.tablero[i] = 'O';
         }
-      this.tablero[0/*Math.round(Math.random() * this.tablero.length)*/] = 'X'
+      this.tablero[Math.round(Math.random() * this.tablero.length)] = 'X'
     }
 
     acierta(posicion : any){

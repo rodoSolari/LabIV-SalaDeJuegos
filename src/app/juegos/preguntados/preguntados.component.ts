@@ -13,7 +13,9 @@ export class PreguntadosComponent {
   puntaje : number = 0;
   ArrayBanderas : any[] = [];
   vidas : number = 2;
+  indicePregunta : number = 0;
   Mensaje : string = "";
+  estiloBloqueo : string = "";
 
   RepetirJuego : boolean = false;
   comenzar : boolean= false;
@@ -34,8 +36,8 @@ export class PreguntadosComponent {
     {
       pregunta:"Cuantos atomos de hidrogeno contiene el agua?" ,
       imagen : "../../../assets/agua.png",
-      respuesta1:"2" ,
-      respuesta2:"4" ,
+      respuesta1:"4" ,
+      respuesta2:"2" ,
       respuesta3:"1" ,
       respuesta4:"No tiene" ,
       respuestaCorrecta: 2
@@ -68,8 +70,10 @@ export class PreguntadosComponent {
     this.api.obtenerBanderas().subscribe((banderas : any) =>{
       this.ArrayBanderas = banderas;
       this.cargarBanderas();
-      this.comenzarJuego();
+
     });
+    this.comenzarJuego();
+
   }
 
   cargarBanderas(){
@@ -78,19 +82,21 @@ export class PreguntadosComponent {
   }
 
   comenzarJuego(){
-    this.pregunta = this.baseDePreguntas[2/*Math.floor(Math.random()*this.baseDePreguntas.length)*/];
+    this.pregunta = this.baseDePreguntas[this.indicePregunta];
     this.vidas = 2;
     this.RepetirJuego = false;
     this.comenzar = true;
     this.perdioElJuego  = false;
     this.respuestaCorrecta = false;
+    this.estiloBloqueo = "";
+    this.Mensaje = "";
   }
 
   resetearJuego(){
     this.comenzar = false;
     this.perdioElJuego  = false;
+    this.indicePregunta = 0;
     this.comenzarJuego();
-
   }
 
   seleccionarOpcion(opcion : number) {
@@ -100,22 +106,34 @@ export class PreguntadosComponent {
         this.perdioElJuego  = true;
         this.respuestaCorrecta = false;
         this.Mensaje = "Respuesta incorrecta, desea volver a jugar?";
+        this.estiloBloqueo = "pointer-events:none";
       }else{
         this.respuestaCorrecta = false;
         this.Mensaje = "Respuesta incorrecta";
-        //siguientePregunta()
+        this.indicePregunta++;
       }
     }else{
+      this.puntaje+=5;
       this.respuestaCorrecta = true;
       this.Mensaje = "Respuesta correcta!"
-      //siguientePregunta()
-      /*var cualEliminar = this.palabra;
-      this.ArrayPalabras = this.ArrayPalabras.filter(function(i) { return i !== cualEliminar });*/
+      if(this.indicePregunta < this.baseDePreguntas.length){
+        this.indicePregunta++;
+      }
     }
+    setTimeout(() => {
+      if(!this.perdioElJuego){
+        if(this.baseDePreguntas.length == this.indicePregunta){
+          console.log("GANEEE");
+          this.Mensaje = "FINALIZASTE, tu puntaje final es: " + this.puntaje;
+          this.estiloBloqueo = "pointer-events:none";
+        }else{
+          this.Mensaje = "";
+          this.pregunta = this.baseDePreguntas[this.indicePregunta];
+        }
+      }
+    }, 1000);
+
   }
 
-  siguientePregunta(){
-
-  }
 
 }

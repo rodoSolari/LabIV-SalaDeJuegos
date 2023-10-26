@@ -9,7 +9,7 @@
                     <img id="imagen" src={{this.pregunta.imagen}} style="width: 40%;height: 200px;object-fit: contain;" alt="">
                </div>
 
-            <div class="d-grid gap-4 col-4 mx-auto" style="margin-top: 50px;">
+            <div class="d-grid gap-4 col-4 mx-auto" style="margin-top: 50px;" [style]='this.estiloBloqueo'>
               <div type="button" class="btn btn-light" (click)="seleccionarOpcion(1)">
                  {{this.pregunta.respuesta1}}
               </div>
@@ -26,12 +26,13 @@
                 <h3 *ngIf="respuestaCorrecta" style="color: green">{{this.Mensaje}}</h3>
                 <h3 *ngIf="!respuestaCorrecta" style="color: red;">{{this.Mensaje}}</h3>
               </div>
-              <div *ngIf="this.perdioElJuego">
-                <button class="btn btn-block btn-primary text-white text-center" (click)="resetearJuego()">Volver a jugar</button>
-              </div>
+            </div>
+            <div *ngIf="this.perdioElJuego">
+              <button class="btn btn-block btn-primary text-white text-center" (click)="resetearJuego()">Volver a jugar</button>
             </div>
           </div>
      </div>
+     <h3>Puntaje: {{this.puntaje}}</h3>
   </body>
 
 </html>
